@@ -32,3 +32,16 @@ rm -rf ~/.kube
 rm -rf ~/Library/Group\ Containers/group.com.docker/pki/
 ```
 Then it would work for you after restarting.
+## 2. Fast Installation for Kubernetes Dashboard
+Kubernetes Dashboard is a general purpose, web-based UI for Kubernetes clusters. It allows users to manage applications running in the cluster and troubleshoot them, as well as manage the cluster itself.
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/aio/deploy/recommended.yaml
+kubectl get pod -n kubernetes-dashboard
+kubectl proxy
+```
+Now access Dashboard at:
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.
+## 3. Create An Authentication Token (RBAC) for Kubernetes
+Please follow this document: https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+
