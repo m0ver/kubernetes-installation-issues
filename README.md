@@ -63,5 +63,40 @@ docker rmi willdockerhub/ingress-nginx-controller:v0.48.1
 ```
 ## 6. 0/1 nodes are available: 1 Insufficient cpu.
 Resource issue, It can be fixed by reducing the cpu, or deleting the node and recreate it once again.
-
+## 7. Ingress can not be accessed?
+If you are following the yaml from the above, you might not notice that ingress service is defined with NodePort type, which actually doesn't work. you need to change it to be LoadBalancer like below:
+```
+kind: Service
+metadata:
+  annotations:
+  labels:
+    helm.sh/chart: ingress-nginx-3.34.0
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/version: 0.48.1
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+  name: ingress-nginx-controller
+  namespace: ingress-nginx
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: https
+  selector:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/component: controller
+```
+Before you start to apply this configuration, you need to remove the old one first with the command:
+```
+kubectl delete service ingress-nginx-controller -n ingress-nginx
+```
+Then apply the above file.
 
