@@ -63,7 +63,7 @@ docker rmi willdockerhub/ingress-nginx-controller:v0.48.1
 ```
 ## 6. 0/1 nodes are available: 1 Insufficient cpu.
 Resource issue, It can be fixed by reducing the cpu, or deleting the node and recreate it once again.
-## 7. Ingress can not be accessed?
+## 7. Ingress can not be accessed in your local with http://localhost?
 If you are following the yaml from the above, you might not notice that ingress service is defined with NodePort type, which actually doesn't work. you need to change it to be LoadBalancer like below:
 ```
 kind: Service
