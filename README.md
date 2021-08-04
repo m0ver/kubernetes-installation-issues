@@ -55,9 +55,13 @@ kubectl patch deployment ingress-nginx-controller -p '{"spec":{"template":{"spec
 
 ```
 ## 5. Failed to pull image "k8s.gcr.io/ingress-nginx/controller:v0.48.1@sha256:...": rpc error: code = Unknown desc = Error response from daemon: Get https://k8s.gcr.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+Go to https://hub.docker.com/, and search 'ingress-nginx', choose one as below:
 ```
 docker pull willdockerhub/ingress-nginx-controller:v0.48.1
 docker tag willdockerhub/ingress-nginx-controller:v0.48.1 k8s.gcr.io/ingress-nginx/controller:v0.48.1
 docker rmi willdockerhub/ingress-nginx-controller:v0.48.1
 ```
+## 6. 0/1 nodes are available: 1 Insufficient cpu.
+Resource issue, It can be fixed by reducing the cpu, or deleting the node and recreate it once again.
+
 
