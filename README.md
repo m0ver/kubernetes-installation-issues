@@ -44,7 +44,7 @@ http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kube
 ## 3. Create An Authentication Token (RBAC) for Kubernetes
 Please follow this document: https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
 
-## Ingress pod stuck in `Pending` state due to nodeSelector: 0/1 nodes are available: 1 node(s) didn't match node selector.
+## 4. Ingress pod stuck in `Pending` state due to nodeSelector: 0/1 nodes are available: 1 node(s) didn't match node selector.
 You might got the issue after you deploy the ingress by the commandline:
 ```
 kubectl create -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/static/provider/cloud/deploy.yaml
@@ -54,9 +54,10 @@ kubectl label node --all kubernetes.io/os=linux
 kubectl patch deployment ingress-nginx-controller -p '{"spec":{"template":{"spec":{"nodeSelector":{"kubernetes.io/os":"linux"}}}}}
 
 ```
-## Failed to pull image "k8s.gcr.io/ingress-nginx/controller:v0.48.1@sha256:e9fb216ace49dfa4a5983b183067e97496e7a8b307d2093f4278cd550c303899": rpc error: code = Unknown desc = Error response from daemon: Get https://k8s.gcr.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+## 5. Failed to pull image "k8s.gcr.io/ingress-nginx/controller:v0.48.1@sha256:...": rpc error: code = Unknown desc = Error response from daemon: Get https://k8s.gcr.io/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
 docker pull willdockerhub/ingress-nginx-controller:v0.48.1
 docker tag willdockerhub/ingress-nginx-controller:v0.48.1 k8s.gcr.io/ingress-nginx/controller:v0.48.1
+docker rmi willdockerhub/ingress-nginx-controller:v0.48.1
 ```
-```
+
