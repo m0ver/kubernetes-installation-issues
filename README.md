@@ -105,6 +105,6 @@ It could be fixed by this command:
 ```
 kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
-## 9. <error: endpoints "*service" not found>
+## 9. <error: endpoints "*service" not found> in describe of ingress.
 
-You need make sure the ingress is running in the same namespace as service.
+You need make sure the ingress is running with the same namespace as service.
