@@ -116,6 +116,12 @@ Please follow this documentation: https://kubernetes.github.io/ingress-nginx/use
 git clone https://github.com/kubernetes/ingress-nginx.git
 kubectl apply --kustomize ingress-nginx/deploy/prometheus/
 ```
+* Sometimes, github.com can not be reached by dns issue, then you need to refresh the dns. If you are using a Mac computer, you need to follow this guide to flush DNS to reset IP:
+  * If you are using OS X 10.11 - 11.0 (Catalina, Sierra, High Sierra, Mojave, Catalina, and Big Sur), you need to type sudo killall -HUP mDNSResponder.
+  * If you are using OS X 10.10 (Yosemite), you need to type sudo discoveryutil mdnsflushcache.
+  * If you are using OS X 10.7 - 10.9 (Mavericks, Mountain Lion, and Lion), you need to type sudo killall -HUP mDNSResponder.
+  * If you are using OS X 10.6 and older, you need to type sudo dscacheutil –flushcache.
+
 * Verify if the installation is complete.
 ```
 kubectl get svc -n ingress-nginx
