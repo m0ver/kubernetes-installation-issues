@@ -107,3 +107,36 @@ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ## 9. <error: endpoints "*service" not found> in describe of ingress.
 
 You need make sure the ingress is running with the same namespace as service.
+
+## 10. How to install Prometheus & Grafana?
+Please follow this documentation: https://kubernetes.github.io/ingress-nginx/user-guide/monitoring/
+
+* If it's not working, then please follow my way as following:
+```
+git clone https://github.com/kubernetes/ingress-nginx.git
+kubectl apply --kustomize ingress-nginx/deploy/prometheus/
+```
+* Verify if the installation is complete.
+```
+kubectl get svc -n ingress-nginx
+```
+* You'll get something similar to the below:
+```
+NAME                                 TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+ingress-nginx-controller             LoadBalancer   10.103.0.157     localhost     80:32467/TCP,443:31218/TCP   3h8m
+ingress-nginx-controller-admission   ClusterIP      10.104.105.151   <none>        443/TCP                      2d17h
+prometheus-server                    NodePort       10.103.13.48     <none>        9090:32531/TCP               18m
+```
+* Obtain the IP address of the nodes in the running cluster:
+```
+kubectl get nodes -o wide
+```
+* In some cases where the node only have internal IP addresses we need to execute:
+```
+kubectl get nodes --selector=kubernetes.io/role!=master -o jsonpath={.items[*].status.addresses[?\(@.type==\"InternalIP\"\)].address}
+```
+* Maybe the IP obtained is still not working for you. then please find the local ip with:
+```
+ifconfig -a
+```
+* You can get the IP. then open your browser to visit this: http://your-ip:32531.
