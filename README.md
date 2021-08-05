@@ -140,3 +140,16 @@ kubectl get nodes --selector=kubernetes.io/role!=master -o jsonpath={.items[*].s
 ifconfig -a
 ```
 * You can get the IP. then open your browser to visit this: http://your-ip:32531.
+* Let's get start to install Grafana:
+```
+kubectl apply --kustomize ingress-nginx/deploy/grafana/
+kubectl get svc -n ingress-nginx
+```
+```
+NAME                                 TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+grafana                              NodePort       10.97.237.121    <none>        3000:32398/TCP               99s
+ingress-nginx-controller             LoadBalancer   10.103.0.157     localhost     80:32467/TCP,443:31218/TCP   3h25m
+ingress-nginx-controller-admission   ClusterIP      10.104.105.151   <none>        443/TCP                      2d17h
+prometheus-server                    NodePort       10.103.13.48     <none>        9090:32531/TCP               35m
+```
+* Visit this: http://your-ip:32398, The username and password is `admin`.
