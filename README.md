@@ -100,8 +100,10 @@ kubectl delete service ingress-nginx-controller -n ingress-nginx
 ```
 Then apply the above file.
 
-## Error from server (InternalError): error when creating "ingress.yml": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": Post "https://ingress-nginx-controller-admission.ingress-nginx.svc:443/networking/v1beta1/ingresses?timeout=10s": x509: certificate signed by unknown authority
+## 8. Error from server (InternalError): error when creating "ingress.yml": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": Post "https://ingress-nginx-controller-admission.ingress-nginx.svc:443/networking/v1beta1/ingresses?timeout=10s": x509: certificate signed by unknown authority
 It could be fixed by this command:
 ```
 kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
+## 9. <error: endpoints "*service" not found>
+You need make sure the ingress is running in the same namespace as service.
