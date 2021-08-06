@@ -97,7 +97,10 @@ Before you start to apply this configuration, you need to remove the old one fir
 ```
 kubectl delete service ingress-nginx-controller -n ingress-nginx
 ```
-Then apply the above file.
+Then apply the above file. or you can clone the project and execute the below commands for more:
+```
+kubectl apply --kustomize ingress/
+```
 
 ## 8. Error from server (InternalError): error when creating "ingress.yml": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": Post "https://ingress-nginx-controller-admission.ingress-nginx.svc:443/networking/v1beta1/ingresses?timeout=10s": x509: certificate signed by unknown authority
 It could be fixed by this command:
