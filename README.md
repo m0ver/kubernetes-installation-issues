@@ -1,6 +1,6 @@
 # Solutions for saving your time on the below issues
 
-## 1. Kubernetes stucking in Docker Desktop (MacOS)
+## 1. Kubernetes stuck at starting in Docker Desktop (MacOS)
 
 * It might caused by a network issue
 * It might happened after upgrade
