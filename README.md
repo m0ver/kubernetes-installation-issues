@@ -2,8 +2,8 @@
 
 ## 1. Kubernetes stuck at starting in Docker Desktop (MacOS)
 
-* It might caused by a network issue
-* It might happened after upgrade
+* It might be caused by a network issue
+* It might be happened after upgrade
 
 Check if these docker images are pulled successfully (e.g. v1.19.3):
 ``` 
