@@ -1,0 +1,8 @@
+docker pull aiotceo/kube-proxy:v1.22.3
+docker pull aiotceo/kube-apiserver:v1.22.3
+docker pull aiotceo/kube-scheduler:v1.22.3
+docker pull aiotceo/kube-controller-manager:v1.22.3
+docker pull rancher/etcd:3.4.13-0
+docker pull bitnami/etcd
+docker pull rancher/pause:3.5
+docker pull coredns/coredns
