@@ -2,7 +2,6 @@ docker pull aiotceo/kube-proxy:v1.22.3
 docker pull aiotceo/kube-apiserver:v1.22.3
 docker pull aiotceo/kube-scheduler:v1.22.3
 docker pull aiotceo/kube-controller-manager:v1.22.3
-docker pull rancher/etcd:3.4.13-0
 docker pull bitnami/etcd
 docker pull rancher/pause:3.5
 docker pull coredns/coredns
@@ -14,3 +13,11 @@ docker tag aiotceo/kube-controller-manager:v1.22.3 k8s.gcr.io/kube-controller-ma
 docker tag aiotceo/kube-scheduler:v1.22.3 k8s.gcr.io/kube-scheduler:v1.22.3
 docker tag aiotceo/kube-proxy:v1.22.3 k8s.gcr.io/kube-proxy:v1.22.3
 docker tag rancher/pause:3.5 k8s.gcr.io/pause:3.5
+
+docker image rm rancher/pause:3.5 
+docker image rm coredns/coredns:latest 
+docker image rm bitnami/etcd:latest 
+docker image rm aiotceo/kube-apiserver:v1.22.3 
+docker image rm aiotceo/kube-controller-manager:v1.22.3 
+docker image rm aiotceo/kube-scheduler:v1.22.3 
+docker image rm aiotceo/kube-proxy:v1.22.3 
