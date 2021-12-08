@@ -4,10 +4,10 @@ docker pull m0ver/kube-scheduler:v1.22.4
 docker pull m0ver/kube-controller-manager:v1.22.4
 docker pull m0ver/etcd:3.5.0-0
 docker pull m0ver/pause:3.5
-docker pull mover/coredns:v1.8.4
+docker pull mover/coredns:1.8.4
 
 docker tag m0ver/etcd:3.5.0-0 k8s.gcr.io/etcd:3.5.0-0
-docker tag m0ver/coredns:v1.8.4 k8s.gcr.io/coredns/coredns:v1.8.4
+docker tag m0ver/coredns:1.8.4 k8s.gcr.io/coredns/coredns:v1.8.4
 docker tag m0ver/kube-apiserver:v1.22.4 k8s.gcr.io/kube-apiserver:v1.22.4
 docker tag m0ver/kube-controller-manager:v1.22.4 k8s.gcr.io/kube-controller-manager:v1.22.4
 docker tag m0ver/kube-scheduler:v1.22.4 k8s.gcr.io/kube-scheduler:v1.22.4
@@ -15,7 +15,7 @@ docker tag m0ver/kube-proxy:v1.22.4 k8s.gcr.io/kube-proxy:v1.22.4
 docker tag m0ver/pause:3.5 k8s.gcr.io/pause:3.5
 
 docker image rm m0ver/pause:3.5 
-docker image rm m0ver/coredns:v1.8.4 
+docker image rm m0ver/coredns:1.8.4 
 docker image rm m0ver/etcd:3.5.0-0 
 docker image rm m0ver/kube-apiserver:v1.22.4 
 docker image rm m0ver/kube-controller-manager:v1.22.4 
